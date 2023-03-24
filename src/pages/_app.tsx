@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import type { AppProps } from "next/app";
+import DashboardLayout from "@/components/layout";
 import { GlobalStyle } from "@/styles/global";
 import { Provider } from "react-redux";
 import { ReactQueryDevtools } from "react-query/devtools";
@@ -27,7 +28,9 @@ const App = ({ Component, pageProps }: AppProps) => {
       <ThemeProvider theme={lightTheme}>
         <GlobalStyle />
         <Provider store={store}>
-          <Component {...props} />
+          <DashboardLayout>
+            <Component {...props} />
+          </DashboardLayout>
         </Provider>
       </ThemeProvider>
     </QueryClientProvider>
