@@ -16,16 +16,20 @@ const Section = styled.section`
 `;
 
 const Content = styled.main`
-  display: flex;
+  width: 100%;
+  margin: 0px auto;
   min-height: calc(100vh - 70px);
+  display: flex;
   flex-direction: column;
   -webkit-box-align: center;
-  align-items: center;
   position: relative;
-  width: 100%;
   overflow: unset;
   transition: all 0.3s ease-out 0s;
   background-color: #fff;
+
+  @media only screen and (min-width: 1720px) {
+    width: 1720px;
+  }
 `;
 
 const DashboardLayout: React.FC<LayoutProps> = ({ children }) => {

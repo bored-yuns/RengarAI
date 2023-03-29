@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { useAppSelector } from "@/hooks/useRedux";
+import useAuth from "@/hooks/useAuth";
 
 const Wrapper = styled.nav`
   width: 100vw;
@@ -42,10 +44,17 @@ const LoginButton = styled.div`
 `;
 
 const Header: React.FC = () => {
+  const { isLoggedIn } = useAppSelector((state) => state.auth);
+  const { signInGoogle, signOut } = useAuth();
+
   return (
     <Wrapper>
       <LogoImg src={"/images/logo.png"} />
-      <LoginButton>로그인</LoginButton>
+      {isLoggedIn ? (
+        <LoginButton onClick={signOut}>로그아웃</LoginButton>
+      ) : (
+        <LoginButton onClick={signInGoogle}>로그인</LoginButton>
+      )}
     </Wrapper>
   );
 };

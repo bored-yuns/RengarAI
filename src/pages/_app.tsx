@@ -6,6 +6,7 @@ import { GlobalStyle } from "@/styles/global";
 import { Provider } from "react-redux";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { ThemeProvider } from "styled-components";
+import UserProvider from "@/containers/auth/UserProvider";
 import { lightTheme } from "@/styles/theme";
 import { wrapper } from "@/stores";
 
@@ -28,9 +29,11 @@ const App = ({ Component, pageProps }: AppProps) => {
       <ThemeProvider theme={lightTheme}>
         <GlobalStyle />
         <Provider store={store}>
-          <DashboardLayout>
-            <Component {...props} />
-          </DashboardLayout>
+          <UserProvider>
+            <DashboardLayout>
+              <Component {...props} />
+            </DashboardLayout>
+          </UserProvider>
         </Provider>
       </ThemeProvider>
     </QueryClientProvider>

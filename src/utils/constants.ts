@@ -1,7 +1,7 @@
 export const MENU_LIST = [
   {
     key: "overview",
-    path: "/",
+    path: "/overview",
     label: "채널 오버뷰",
     icon: "/images/menu-overview.svg",
   },
