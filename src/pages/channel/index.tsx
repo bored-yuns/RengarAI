@@ -35,7 +35,7 @@ const Page: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Rengar AI</title>
+        <title>채널 오버뷰 | Rengar</title>
         <meta name="description" content="Rengar AI" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

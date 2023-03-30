@@ -1,5 +1,6 @@
 import { Flex, SplitView } from "@/components/common/View";
 
+import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
@@ -12,7 +13,7 @@ export const ChannelView = styled.div`
   margin-top: 34px;
 `;
 
-const CardContainer = styled.div`
+const CardContainer = styled(Link)`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -106,10 +107,8 @@ const TagItem = styled.div`
 `;
 
 const ChannelCard: React.FC = () => {
-  const router = useRouter();
-
   return (
-    <CardContainer onClick={() => router.push("/channel/FRIENDSHIP_ING")}>
+    <CardContainer href={"/channel/FRIENDSHIP_ING"}>
       <SplitView>
         <Flex>
           <AvatarImg />

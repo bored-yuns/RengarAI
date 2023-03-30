@@ -1,4 +1,5 @@
 import { Flex } from "@/components/common/View";
+import Link from "next/link";
 import { RenderProps } from "@/components/Table/Column";
 import styled from "styled-components";
 import { useRouter } from "next/router";
@@ -29,16 +30,16 @@ const ChannelID = styled.p`
 `;
 
 export const ChannelCell = ({ value }: RenderProps) => {
-  const router = useRouter();
-
   return (
-    <ChannelView onClick={() => router.push(`/channel/${value.id}`)}>
-      <Avatar />
-      <div>
-        <ChannelName>{value.name}</ChannelName>
-        <ChannelID>@{value.id}</ChannelID>
-      </div>
-    </ChannelView>
+    <Link href={`/channel/${value.id}`}>
+      <ChannelView>
+        <Avatar />
+        <div>
+          <ChannelName>{value.name}</ChannelName>
+          <ChannelID>@{value.id}</ChannelID>
+        </div>
+      </ChannelView>
+    </Link>
   );
 };
 
