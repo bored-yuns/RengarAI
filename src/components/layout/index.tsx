@@ -1,5 +1,7 @@
+import React, { useState } from "react";
+
 import Header from "./Header";
-import React from "react";
+import MobileMenu from "./MobileMenu";
 import Sider from "./Sider";
 import styled from "styled-components";
 
@@ -30,12 +32,19 @@ const Content = styled.main`
   @media only screen and (min-width: 1720px) {
     width: 1720px;
   }
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const DashboardLayout: React.FC<LayoutProps> = ({ children }) => {
+  const [menuModal, setMenuModal] = useState(false);
+
   return (
     <>
-      <Header />
+      <MobileMenu modal={menuModal} setModal={setMenuModal} />
+      <Header setMenuModal={setMenuModal} />
       <Section>
         <Sider />
         <Content>{children}</Content>

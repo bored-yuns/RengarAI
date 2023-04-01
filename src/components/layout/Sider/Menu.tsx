@@ -3,6 +3,10 @@ import { MENU_LIST } from "@/utils/constants";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
+type MenuListProps = {
+  callback?: (value?: any) => void;
+};
+
 type MenuStyleProps = {
   selected?: boolean;
 };
@@ -11,6 +15,10 @@ const MenuView = styled.div`
   width: 100%;
   padding: 34px 18px;
   box-sizing: border-box;
+
+  @media only screen and (max-width: 575px) {
+    padding: 24px 0px;
+  }
 `;
 
 const MenuItem = styled(Link)<MenuStyleProps>`
@@ -48,7 +56,7 @@ const MenuIcon = styled.img<MenuStyleProps>`
   opacity: ${(props) => (props.selected ? 1 : 0.35)};
 `;
 
-const MenuList: React.FC = () => {
+const MenuList: React.FC<MenuListProps> = ({ callback }) => {
   const router = useRouter();
 
   return (
@@ -56,7 +64,12 @@ const MenuList: React.FC = () => {
       {MENU_LIST.map((el) => {
         const selected = router.pathname === el.path;
         return (
-          <MenuItem key={el.key} href={el.path} selected={selected}>
+          <MenuItem
+            key={el.key}
+            href={el.path}
+            selected={selected}
+            onClick={() => callback && callback(el)}
+          >
             <MenuIcon selected={selected} src={el.icon} />
             <MenuText selected={selected}>{el.label}</MenuText>
           </MenuItem>

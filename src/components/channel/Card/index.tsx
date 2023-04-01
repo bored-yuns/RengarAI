@@ -11,6 +11,12 @@ export const ChannelView = styled.div`
   grid-template-columns: repeat(auto-fill, calc(25% - 18px));
   grid-gap: 24px;
   margin-top: 34px;
+
+  @media only screen and (max-width: 575px) {
+    grid-template-columns: repeat(auto-fill, 100%);
+    grid-gap: 24px;
+    margin-top: 24px;
+  }
 `;
 
 const CardContainer = styled(Link)`

@@ -16,6 +16,10 @@ const ItemLink = styled(Link)`
     font-weight: 500;
     color: #351fd7;
   }
+
+  @media only screen and (max-width: 575px) {
+    font-size: 14px;
+  }
 `;
 
 export const BreadcrumbItem = ({ href, label }: BreadcrumbItemProps) => {

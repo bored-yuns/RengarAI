@@ -20,12 +20,12 @@ const UserProvider = ({ children }: UserProviderProps): JSX.Element => {
   const { isLoggedIn } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
-    if (isLoggedIn === false) {
+    if (isLoggedIn === true) {
       firebaseClientAuth.onAuthStateChanged((user) => {
         saveStore(user);
       });
     }
-  }, []);
+  }, [isLoggedIn]);
 
   return <>{children}</>;
 };

@@ -1,7 +1,26 @@
+import { DesktopView } from "../common/View";
+import Link from "next/link";
+import Profile from "./Profile";
 import React from "react";
 import styled from "styled-components";
-import { useAppSelector } from "@/hooks/useRedux";
-import useAuth from "@/hooks/useAuth";
+
+type HeaderProps = {
+  setMenuModal: (visible: boolean) => void;
+};
+
+const Header: React.FC<HeaderProps> = ({ setMenuModal }) => {
+  return (
+    <Wrapper>
+      <Link href="/channel">
+        <LogoImg src={"/images/logo.png"} />
+      </Link>
+      <DesktopView>
+        <Profile />
+      </DesktopView>
+      <MenuIcon src="/images/mb-menu.svg" onClick={() => setMenuModal(true)} />
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.nav`
   width: 100vw;
@@ -17,46 +36,30 @@ const Wrapper = styled.nav`
   justify-content: space-between;
   padding: 0px 34px;
   box-sizing: border-box;
+
+  @media only screen and (max-width: 575px) {
+    padding: 0px 18px;
+  }
 `;
 
 const LogoImg = styled.img`
   height: 24px;
   object-fit: contain;
   cursor: pointer;
-`;
 
-const LoginButton = styled.div`
-  padding: 0px 19px;
-  height: 40px;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: 500;
-  background-color: ${({ theme }) => theme.colors.primary100};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  cursor: pointer;
-
-  :hover {
-    opacity: 0.85;
+  @media only screen and (max-width: 575px) {
+    height: 21px;
   }
 `;
 
-const Header: React.FC = () => {
-  const { isLoggedIn } = useAppSelector((state) => state.auth);
-  const { signInGoogle, signOut } = useAuth();
+const MenuIcon = styled.img`
+  height: 19px;
+  display: none;
+  object-fit: contain;
 
-  return (
-    <Wrapper>
-      <LogoImg src={"/images/logo.png"} />
-      {isLoggedIn ? (
-        <LoginButton onClick={signOut}>로그아웃</LoginButton>
-      ) : (
-        <LoginButton onClick={signInGoogle}>로그인</LoginButton>
-      )}
-    </Wrapper>
-  );
-};
+  @media only screen and (max-width: 575px) {
+    display: block;
+  }
+`;
 
 export default Header;

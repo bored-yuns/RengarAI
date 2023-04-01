@@ -30,6 +30,10 @@ const PageTitle = styled.h1`
   font-size: 26px;
   font-weight: 800;
   color: #08004a;
+
+  @media only screen and (max-width: 575px) {
+    font-size: 23px;
+  }
 `;
 
 const Icon = styled.img`
@@ -37,11 +41,21 @@ const Icon = styled.img`
   margin-right: 11px;
   object-fit: contain;
   padding-bottom: 3px;
+
+  @media only screen and (max-width: 575px) {
+    width: 20px;
+    margin-right: 7px;
+    padding-bottom: 0px;
+  }
 `;
 
 const TagContainer = styled.div`
   margin-left: 14px;
   padding-bottom: 3px;
+
+  @media only screen and (max-width: 575px) {
+    margin-left: 10px;
+  }
 `;
 
 const TagView = styled.div`
@@ -51,6 +65,11 @@ const TagView = styled.div`
   font-size: 13px;
   font-weight: 700;
   color: #00d627;
+
+  @media only screen and (max-width: 575px) {
+    padding: 8px 7px;
+    font-size: 12px;
+  }
 `;
 
 export default Header;

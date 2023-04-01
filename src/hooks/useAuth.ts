@@ -34,8 +34,8 @@ const useAuth = () => {
 
   // firebase global logout handler
   const signOut = () => {
-    dispatch(authSlice.actions.resetAuthState());
     firebaseClientAuth.signOut();
+    dispatch(authSlice.actions.resetAuthState());
   };
 
   return {

@@ -9,6 +9,22 @@ export const VideoView = styled.div`
   grid-template-columns: repeat(auto-fill, calc(25% - 18px));
   grid-gap: 34px 24px;
   margin-top: 34px;
+
+  @media only screen and (max-width: 1680px) {
+    grid-template-columns: repeat(auto-fill, calc(33.3% - 16px));
+  }
+
+  @media only screen and (max-width: 1380px) {
+    grid-template-columns: repeat(auto-fill, calc(50% - 12px));
+  }
+
+  @media only screen and (max-width: 1080px) {
+    grid-template-columns: repeat(auto-fill, calc(100%));
+  }
+
+  @media only screen and (max-width: 575px) {
+    margin-top: 18px;
+  }
 `;
 
 const ThumbnailCover = styled.div`
@@ -16,7 +32,7 @@ const ThumbnailCover = styled.div`
   background-color: #f0f0f0;
   aspect-ratio: 16 / 9;
   border-radius: 14px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   box-sizing: border-box;
   overflow: hidden;
   position: relative;

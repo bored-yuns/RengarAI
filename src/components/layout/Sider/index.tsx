@@ -15,6 +15,10 @@ const Wrapper = styled.aside`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const SideBar: React.FC = () => {

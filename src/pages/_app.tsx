@@ -4,10 +4,12 @@ import type { AppProps } from "next/app";
 import DashboardLayout from "@/components/layout";
 import { GlobalStyle } from "@/styles/global";
 import { Provider } from "react-redux";
+import ReactModal from "react-modal";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { ThemeProvider } from "styled-components";
 import UserProvider from "@/containers/auth/UserProvider";
 import { lightTheme } from "@/styles/theme";
+import { useEffect } from "react";
 import { wrapper } from "@/stores";
 
 const client = new QueryClient({
@@ -20,6 +22,14 @@ const client = new QueryClient({
 
 const App = ({ Component, pageProps }: AppProps) => {
   const { store, props } = wrapper.useWrappedStore(pageProps);
+
+  useEffect(() => {
+    return () => {
+      if (typeof window !== "undefined") {
+        ReactModal.setAppElement("body");
+      }
+    };
+  }, []);
 
   return (
     <QueryClientProvider client={client}>

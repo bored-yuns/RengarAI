@@ -27,7 +27,13 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     resetAuthState(state) {
-      state = initialState;
+      state.uid = undefined;
+      state.email = undefined;
+      state.name = undefined;
+      state.avatarURL = undefined;
+      state.accessToken = undefined;
+      state.refresthToken = undefined;
+      state.isLoggedIn = false;
     },
     setAuthState(state, action) {
       state.uid = action.payload.uid;

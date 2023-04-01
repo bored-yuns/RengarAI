@@ -4,7 +4,6 @@ import { BreadcrumbItem } from "@/components/common/Breadcrumb";
 import Head from "next/head";
 import Header from "@/components/common/Header";
 import { PageWrapper } from "@/components/common/View";
-import styled from "styled-components";
 
 const Page = () => {
   return (
