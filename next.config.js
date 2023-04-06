@@ -9,12 +9,12 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/channel*",
+        source: "/channel",
         destination: "/demo",
         permanent: true,
       },
       {
-        source: "/video*",
+        source: "/video",
         destination: "/demo",
         permanent: true,
       },
