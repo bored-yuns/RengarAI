@@ -10,11 +10,11 @@ type BreadcrumbItemProps = {
 const ItemLink = styled(Link)`
   font-size: 15px;
   font-weight: 500;
-  color: #a09eb2;
+  color: #75737b;
 
   :hover {
     font-weight: 500;
-    color: #351fd7;
+    color: #e6e2ff;
   }
 
   @media only screen and (max-width: 575px) {

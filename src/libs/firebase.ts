@@ -1,4 +1,9 @@
-import { getAuth } from "firebase/auth";
+import {
+  browserLocalPersistence,
+  getAuth,
+  setPersistence,
+} from "firebase/auth";
+
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
@@ -13,3 +18,4 @@ const firebaseConfig = {
 
 const firebaseClientApp = initializeApp(firebaseConfig);
 export const firebaseClientAuth = getAuth(firebaseClientApp);
+setPersistence(firebaseClientAuth, browserLocalPersistence);

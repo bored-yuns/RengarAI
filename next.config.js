@@ -5,7 +5,17 @@ const nextConfig = {
     return [
       {
         source: "/",
-        destination: "/channel",
+        destination: "/demo",
+        permanent: true,
+      },
+      {
+        source: "/channel*",
+        destination: "/demo",
+        permanent: true,
+      },
+      {
+        source: "/video*",
+        destination: "/demo",
         permanent: true,
       },
     ];

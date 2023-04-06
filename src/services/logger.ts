@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
 
-type ErrorProps = Error | AxiosError | any;
+export type ErrorProps = Error | AxiosError | any;
 
 export const ErrorLogger = (error: ErrorProps) => {
   if (error.response) {

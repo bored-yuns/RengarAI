@@ -3,8 +3,10 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 import { firebaseClientAuth } from "@/libs/firebase";
 import { useAppDispatch } from "./useRedux";
+import { useRouter } from "next/router";
 
 const useAuth = () => {
+  const router = useRouter();
   const dispatch = useAppDispatch();
 
   // internal data store handler
@@ -24,7 +26,10 @@ const useAuth = () => {
   const signInGoogle = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(firebaseClientAuth, provider)
-      .then((res) => saveStore(res.user))
+      .then((res) => {
+        saveStore(res.user);
+        router.push("/demo");
+      })
       .catch((err) => {
         // render failure modal here
         console.log("error");
@@ -36,6 +41,7 @@ const useAuth = () => {
   const signOut = () => {
     firebaseClientAuth.signOut();
     dispatch(authSlice.actions.resetAuthState());
+    router.push("/demo/auth");
   };
 
   return {

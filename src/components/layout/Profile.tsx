@@ -13,7 +13,10 @@ const Profile = () => {
   if (isLoggedIn === true) {
     return (
       <>
-        <DesktopView>
+        <div onClick={signOut}>
+          <AvatarImg src={avatarURL} />
+        </div>
+        {/* <DesktopView>
           <div onClick={signOut}>
             <AvatarImg src={avatarURL} />
           </div>
@@ -34,13 +37,14 @@ const Profile = () => {
               <LogoutText>로그아웃</LogoutText>
             </LogoutBtn>
           </MbProfileView>
-        </MobileView>
+        </MobileView> */}
       </>
     );
   } else {
     return (
       <>
-        <DesktopView>
+        <LoginButton onClick={signInGoogle}>로그인</LoginButton>
+        {/* <DesktopView>
           <LoginButton onClick={signInGoogle}>로그인</LoginButton>
         </DesktopView>
         <MobileView>
@@ -53,7 +57,7 @@ const Profile = () => {
               <LogoutText>로그인</LogoutText>
             </LogoutBtn>
           </MbProfileView>
-        </MobileView>
+        </MobileView> */}
       </>
     );
   }
@@ -135,8 +139,8 @@ const LoginButton = styled.div`
 `;
 
 const AvatarImg = styled.img`
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border-radius: 36px;
   object-fit: cover;
   position: relative;

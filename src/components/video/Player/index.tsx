@@ -1,5 +1,27 @@
+import { IVideoDetail } from "@/services/videos";
 import React from "react";
 import styled from "styled-components";
+
+type VideoPlayerProps = {
+  data: IVideoDetail;
+};
+
+const VideoPlayer = ({ data }: VideoPlayerProps) => {
+  return (
+    <>
+      <VideoView>
+        <EmbedVideo
+          title=""
+          frameBorder="0"
+          allowFullScreen
+          src={`https://www.youtube.com/embed/${data.video.video_id}`}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        />
+      </VideoView>
+      <Title>{data.video.title}</Title>
+    </>
+  );
+};
 
 const VideoView = styled.div`
   width: 100%;
@@ -42,22 +64,5 @@ const Title = styled.div`
     font-size: 18px;
   }
 `;
-
-const VideoPlayer = () => {
-  return (
-    <>
-      <VideoView>
-        <EmbedVideo
-          title=""
-          frameBorder="0"
-          allowFullScreen
-          src={`https://www.youtube.com/embed/${"TpZcGhYp4rw"}`}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        />
-      </VideoView>
-      <Title>Elon wants GPT-5 stopped NOW… 5 reasons AI kinda sucks</Title>
-    </>
-  );
-};
 
 export default VideoPlayer;

@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import type { AppProps } from "next/app";
-import DashboardLayout from "@/components/layout";
+import DemoLayout from "@/components/layout/Demo";
 import { GlobalStyle } from "@/styles/global";
 import { Provider } from "react-redux";
 import ReactModal from "react-modal";
@@ -40,9 +40,9 @@ const App = ({ Component, pageProps }: AppProps) => {
         <GlobalStyle />
         <Provider store={store}>
           <UserProvider>
-            <DashboardLayout>
+            <DemoLayout>
               <Component {...props} />
-            </DashboardLayout>
+            </DemoLayout>
           </UserProvider>
         </Provider>
       </ThemeProvider>
