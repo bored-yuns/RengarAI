@@ -68,7 +68,10 @@ const DemoPage = () => {
               placeholder="분석할 유튜브 영상의 URL을 입력해주세요"
               onSubmit={handleSearch}
             />
-            <SearchButton isActive={videoURL.length > 0} onClick={handleSearch}>
+            <SearchButton
+              isActive={videoURL.length > 0}
+              onClick={() => videoURL.length > 0 && handleSearch()}
+            >
               분석
             </SearchButton>
           </SearchBar>
@@ -175,7 +178,7 @@ const SearchButton = styled.div<SearchStyleProps>`
   height: calc(100% - 14px);
   border-radius: 999px;
   background-color: ${(props) => (props.isActive ? "#503d89" : "#333238")};
-  cursor: pointer;
+  cursor: ${(props) => (props.isActive ? "pointer" : "default")};
 
   @media only screen and (max-width: 575px) {
     font-size: 14px;
