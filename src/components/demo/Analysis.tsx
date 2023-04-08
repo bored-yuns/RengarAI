@@ -1,3 +1,5 @@
+import "github-markdown-css/github-markdown-dark.css";
+
 import { useMemo, useState } from "react";
 
 import { Flex } from "../common/View";
@@ -35,7 +37,7 @@ const Analysis = ({ data }: AnalysisProps) => {
   }, [data]);
 
   return (
-    <Wrapper>
+    <Wrapper className="markdown-body">
       <MenuView>
         {menu_list.map((el, idx) => {
           const isSelected = selected === el.key;

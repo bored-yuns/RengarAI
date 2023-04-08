@@ -5,7 +5,6 @@ import { BreadcrumbItem } from "../common/Breadcrumb";
 import { Flex } from "../common/View";
 import { IVideoDetail } from "@/services/videos";
 import { formatThousand } from "@/utils/functions";
-import { marked } from "marked";
 import styled from "styled-components";
 
 type VideoPlayerProps = {
@@ -13,20 +12,18 @@ type VideoPlayerProps = {
 };
 
 const VideoPlayer = ({ data }: VideoPlayerProps) => {
-  const extractListItems = (html: string) => {
-    const regex = /<li>(.*?)<\/li>/g;
-    const matches = html.matchAll(regex);
-    const items = [];
-    for (const match of matches) {
-      items.push(match[1]);
-    }
-    return items;
+  const extractHashtags = (str: string): string[] => {
+    const hashtags = str
+      .split(/\s+/)
+      .filter((word) => word.startsWith("#"))
+      .map((hashtag) => hashtag.slice(1));
+    return hashtags;
   };
 
-  const hashtagList = useMemo(() => {
-    const mdScript = marked(data.analysis.hashtag);
-    return extractListItems(mdScript);
-  }, [data]);
+  const hashtagList = useMemo(
+    () => extractHashtags(data.analysis.hashtag),
+    [data.analysis.hashtag]
+  );
 
   return (
     <>
@@ -38,11 +35,13 @@ const VideoPlayer = ({ data }: VideoPlayerProps) => {
         <VideoIcon src="/images/menu-video.svg" />
         <Title className="text-ellipsis">{data.video.title}</Title>
       </Flex>
-      <TagView>
-        {hashtagList.map((el, idx) => {
-          return <TagItem key={idx}>{el}</TagItem>;
-        })}
-      </TagView>
+      {hashtagList && hashtagList.length > 0 && (
+        <TagView>
+          {hashtagList.map((el, idx) => {
+            return <TagItem key={idx}>{el}</TagItem>;
+          })}
+        </TagView>
+      )}
       <VideoView>
         <EmbedVideo
           title=""
@@ -61,7 +60,7 @@ const VideoPlayer = ({ data }: VideoPlayerProps) => {
         <StatItem>
           <StatIcon src="/images/likes.svg" />
           <StatValue>
-            좋아요 {formatThousand(data.video.like_counts)}개
+            좋아요 {formatThousand(data.video.like_count)}개
           </StatValue>
         </StatItem>
       </StatsView>

@@ -40,20 +40,38 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .markdown-body {
+    background-color: transparent;
+  }
+
   .mdx-embed {
+    color: #cccccc;
+    font-size: 15.6px;
+    
     h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+    }
+    h2 {
       font-size: 18px;
       font-weight: 700;
       color: #fff;
-      line-height: 1.4;
-      margin-bottom: 12px;
     }
+    h3, h4, h5, h6 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+    }
+    strong {
+      font-size: 15.6px;
+      font-weight: 600;
+      color: #fff;
+    }    
     p {
       font-size: 15.6px;
       font-weight: 500;
       color: #cccccc;
-      line-height: 1.6;
-      margin-bottom: 8px;
     }
     a {
       color: #AD95FF;
@@ -62,11 +80,6 @@ export const GlobalStyle = createGlobalStyle`
     ul {
       display: block;
       list-style-type: disc;
-      margin-block-start: 14px;
-      margin-block-end: 8px;
-      margin-inline-start: 0px;
-      margin-inline-end: 0px;
-      padding-inline-start: 40px;
       font-size: 15.6px;
       font-weight: 500;
       color: #cccccc;
@@ -74,17 +87,13 @@ export const GlobalStyle = createGlobalStyle`
   ol {
       display: block;
       list-style-type: decimal;
-      margin-block-start: 14px;
-      margin-block-end: 8px;
-      margin-inline-start: 0px;
-      margin-inline-end: 0px;
-      padding-inline-start: 40px;
       font-size: 15.6px;
       font-weight: 500;
       color: #cccccc;
     }
   li {
      display: list-item;
+     line-height: 1.4;
      text-align: -webkit-match-parent;
     }
   }

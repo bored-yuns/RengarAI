@@ -15,13 +15,13 @@ const VideoDetail: React.FC = () => {
   const { uid } = useAppSelector((state) => state.auth);
 
   const { data, isLoading } = useQuery(
-    "video_detail",
+    ["video_detail", uid, query.video_id],
     async () =>
       await VideoService.getVideoDetail({
         user: uid,
         video_id: query.video_id,
       }),
-    { enabled: !!uid && !!query.video_id }
+    { enabled: !!uid && !!query.video_id, cacheTime: 180000 }
   );
 
   useEffect(() => {
@@ -37,7 +37,17 @@ const VideoDetail: React.FC = () => {
   }, [data, isLoading]);
 
   if (isLoading || !data) {
-    return <Loader />;
+    return (
+      <>
+        <Head>
+          <title>영상 분석 | Rengar</title>
+          <meta name="description" content="Rengar AI" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <Loader />
+      </>
+    );
   }
 
   return (

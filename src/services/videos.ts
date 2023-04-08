@@ -7,7 +7,7 @@ interface IVideo {
   title: string;
   summary: string;
   comment_summary: string;
-  like_counts: number;
+  like_count: number;
   hits: number;
 }
 
