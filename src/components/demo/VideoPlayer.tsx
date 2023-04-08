@@ -80,6 +80,12 @@ const VideoView = styled.div`
   justify-content: center;
   margin-top: 16px;
   margin-bottom: 22px;
+
+  @media only screen and (max-width: 575px) {
+    width: 100vw;
+    border-radius: 0px;
+    margin-left: -18px;
+  }
 `;
 
 const EmbedVideo = styled.iframe`
@@ -128,6 +134,7 @@ const TagItem = styled.div`
   color: #b6b6b6;
   background-color: #252525;
   margin-right: 12px;
+  flex-shrink: 0;
 `;
 
 const StatsView = styled.div`
@@ -141,6 +148,10 @@ const StatsView = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  @media only screen and (max-width: 575px) {
+    padding: 16px;
+  }
 `;
 
 const StatItem = styled.div`
@@ -164,12 +175,21 @@ const StatIcon = styled.img`
   object-fit: contain;
   margin-right: 9px;
   margin-bottom: 3px;
+
+  @media only screen and (max-width: 575px) {
+    height: 14px;
+    margin-right: 5px;
+  }
 `;
 
 const StatValue = styled.span`
   font-size: 15px;
   font-weight: 700;
   color: #b6b6b6;
+
+  @media only screen and (max-width: 575px) {
+    font-size: 13px;
+  }
 `;
 
 export default VideoPlayer;

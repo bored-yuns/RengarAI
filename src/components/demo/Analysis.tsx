@@ -148,6 +148,13 @@ const ContentView = styled.div`
   margin-top: 14px;
   border-radius: 18px;
   box-sizing: border-box;
+
+  @media only screen and (max-width: 575px) {
+    width: 100vw;
+    padding: 18px;
+    border-radius: 0px;
+    margin-left: -18px;
+  }
 `;
 
 const ContentTitle = styled.div`
